@@ -1,0 +1,6 @@
+env/
+__pycache__/
+*.pyc
+vina-1.2.5-linux-x86_64.tar.gz
+Miniconda3-latest-Linux-x86_64.sh
+Miniconda3-latest-Linux-x86_64.sh
