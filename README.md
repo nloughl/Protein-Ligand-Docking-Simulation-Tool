@@ -10,11 +10,45 @@ Optionally, generates visualizations (e.g., PNG images of docked complexes using
 Deliverable: A command-line tool (e.g., run_docking.py) that users can run locally with inputs and get results.
 
 ## Installation
-1. Install Python 3.8+.
-2. Create a virtual environment: `python -m venv docking_env`.
-3. Activate it: `source docking_env/bin/activate` (Linux/Mac) or `docking_env\Scripts\activate` (Windows).
-4. Install dependencies: `pip install vina biopython numpy pandas`.
-5. Install AutoDock Vina: Download from https://github.com/ccsb-scripps/AutoDock-Vina.
+### Prerequisites
+
+- [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
+- [VS Code with WSL extension](https://code.visualstudio.com/docs/remote/wsl)
+- [Miniconda (Linux version)](https://docs.conda.io/en/latest/miniconda.html)
+
+### Steps
+
+1. **Download Miniconda for Linux (if not already installed):**
+
+   In your WSL terminal:
+
+   ```bash
+   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+   bash Miniconda3-latest-Linux-x86_64.sh
+
+2. ***Restart your shell or source*** 
+  ``` bash 
+  source ~/.bashrc
+
+3. ***Create new conda environment*** 
+  ```bash
+  conda create -n docking_env python=3.10
+  conda activate docking_env
+
+4. ***Install packages ***
+``` bash
+conda install -c conda-forge vina openbabel meeko rdkit
+
+## Project Structure
+
+protein_docking_project/
+├── data/               # Input protein and ligand files (PDB, PDBQT, etc.)
+├── scripts/            # Python or shell scripts for the pipeline
+├── results/            # Output docking results
+├── env.yml             # Optional: environment file for conda
+├── .gitignore
+└── README.md
+
 
 ## Usage
 ```bash
