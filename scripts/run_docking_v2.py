@@ -5,11 +5,6 @@ import re
 from vina import Vina
 import pandas as pd
 from pathlib import Path
-import logging
-
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 def run_docking(protein_file, ligand_file, output_dir, center, box_size, exhaustiveness=8, max_poses=10):
     """Run docking with Vina."""
@@ -23,7 +18,7 @@ def run_docking(protein_file, ligand_file, output_dir, center, box_size, exhaust
         # Get poses as a string
         poses_str = v.poses()
         # Debug: Inspect pose output
-        logger.debug(f"Raw poses for {ligand_file}: {poses_str[:500]}...")
+        print(f"Raw poses for {ligand_file}: {poses_str[:500]}...")  # Print first 500 chars for brevity
         # Parse REMARK VINA RESULT lines
         pose_pattern = re.compile(r'REMARK VINA RESULT:\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)')
         for i, match in enumerate(pose_pattern.finditer(poses_str), 1):
@@ -32,15 +27,12 @@ def run_docking(protein_file, ligand_file, output_dir, center, box_size, exhaust
             energy, rmsd_lb, rmsd_ub = map(float, match.groups())
             energies.append([i, energy, rmsd_lb, rmsd_ub])
         if not energies:
-            logger.warning(f"No valid pose data found in Vina output for {ligand_file}")
-        # Save docked poses to output_dir
-        base_name = os.path.basename(ligand_file).replace('.pdbqt', '')
-        output_pdbqt = os.path.join(output_dir, f"docked_{base_name}.pdbqt")
+            print(f"No valid pose data found in Vina output for {ligand_file}")
+        output_pdbqt = os.path.join(output_dir, f"docked_{os.path.basename(ligand_file)}")
         v.write_poses(output_pdbqt)
-        logger.info(f"Saved docked poses to {output_pdbqt}")
         return energies
     except Exception as e:
-        logger.error(f"Error docking {ligand_file}: {e}")
+        print(f"Error docking {ligand_file}: {e}")
         return []
 
 def save_results(energies, ligand_file, output_dir):
@@ -50,7 +42,6 @@ def save_results(energies, ligand_file, output_dir):
     base_name = os.path.basename(ligand_file).replace('.pdbqt', '')
     output_csv = os.path.join(output_dir, f'{base_name}_scores.csv')
     df.to_csv(output_csv, index=False)
-    logger.info(f"Saved scores to {output_csv}")
     return output_csv
 
 def main():
@@ -78,11 +69,11 @@ def main():
         raise FileNotFoundError(f"No valid ligand PDBQT files found in {args.ligand_dir}")
 
     for ligand_file in ligand_files:
-        logger.info(f"Docking {ligand_file}...")
-        energies = run_docking(args.protein, ligand_file, args.output_dir, args.center, args.box_size)
+        print(f"Docking {ligand_file}...")
+        energies = run_docking(args.protein, ligand_file, args.center, args.box_size)
         if energies:
             output_csv = save_results(energies, ligand_file, args.output_dir)
-            logger.info(f"Results saved to {output_csv}")
+            print(f"Results saved to {output_csv}")
 
 if __name__ == "__main__":
     main()

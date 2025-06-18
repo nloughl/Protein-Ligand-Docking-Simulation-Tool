@@ -1,0 +1,24 @@
+[2025-06-18 14:21:40] Processing 1hsg
+[2025-06-18 14:21:40] WARNING: results/docked_1hsg_ligand.pdb not found and no PDBQT to convert
+[2025-06-18 14:21:40] Processing 4hap
+[2025-06-18 14:21:40] WARNING: data/4hap_protein.pdb not found and no PDBQT to convert
+[2025-06-18 14:21:40] Visualization complete
+[2025-06-18 14:23:45] Processing 1hsg
+[2025-06-18 14:23:45] WARNING: results/docked_1hsg_ligand.pdb not found and no PDBQT to convert
+[2025-06-18 14:23:45] Visualization complete
+[2025-06-18 14:26:47] Processing 1hsg
+[2025-06-18 14:26:47] WARNING: results/docked_1hsg_ligand.pdb not found and no PDBQT to convert
+[2025-06-18 14:26:47] Visualization complete
+[2025-06-18 14:41:14] Processing 1hsg
+[2025-06-18 14:41:14] Converting results/docked_1hsg_ligand.pdbqt to results/docked_1hsg_ligand.pdb
+[2025-06-18 14:41:14] Running visualization for 1hsg
+[2025-06-18 14:41:35] Success: Generated results/docked_1hsg_ligand_viz.png
+[2025-06-18 14:41:35] Visualization complete
+[2025-06-18 14:42:56] Processing 1hsg
+[2025-06-18 14:42:56] Running visualization for 1hsg
+[2025-06-18 14:43:00] Success: Generated results/docked_1hsg_ligand_viz.png
+[2025-06-18 14:43:00] Visualization complete
+[2025-06-18 14:46:44] Processing 1hsg
+[2025-06-18 14:46:44] Running visualization for 1hsg
+[2025-06-18 14:47:39] Success: Generated results/docked_1hsg_ligand_viz.png
+[2025-06-18 14:47:39] Visualization complete
