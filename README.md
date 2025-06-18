@@ -1,5 +1,5 @@
 # Protein-Ligand-Docking-Simulation-Tool
-A standalone Python script that automates protein-ligand docking and processes results.
+Python script that automates protein-ligand docking and processes results.
 
 Reads protein and ligand files.
 Prepares files for docking (e.g., converts formats, sets docking grid).
